@@ -1,0 +1,33 @@
+{
+  "name": "@blume/bridge-cluster",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The k-of-n operator cluster behind bridge.blumefi.com: a HotPocket contract that watches the XRP Ledger and XRPL EVM and signs for both. Runs on Evernode.",
+  "scripts": {
+    "build": "rm -rf dist dist-app && ncc build src/loader.ts -o dist --minify=false && ncc build src/contract.ts -o dist-app --minify=false && cp dist-app/index.js dist/app.js && rm -rf dist-app && cp hp/hp.cfg.override dist/ && tsx scripts/bundle-genesis.ts",
+    "build:client": "rm -rf dist-client && ncc build clients/stage1.ts -o dist-client --minify=false && ncc build clients/query.ts -o dist-client/query --minify=false",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "deploy:dev": "bash scripts/deploy-dev.sh"
+  },
+  "dependencies": {
+    "@noble/curves": "^1.9.7",
+    "@noble/hashes": "^1.8.0",
+    "hotpocket-js-client": "0.5.7",
+    "hotpocket-nodejs-contract": "0.7.4",
+    "ripple-binary-codec": "^2.10.0",
+    "ripple-keypairs": "^2.0.0",
+    "viem": "^2.56.3",
+    "xrpl": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "@vercel/ncc": "^0.38.3",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

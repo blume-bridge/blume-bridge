@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-client/
+keys/
+*.key
+*.seed
+.env
+.env.*
+!.env.example
+dist-tools/
+.snapshot/
+genesis/snapshot.json
+# Built the day of the boot from seed/picks.json (scripts/seed-build.ts): prices and issuer settings go stale.
+seed/mainnet.json
+# Written by scripts/mainnet-genesis.ts right before a boot (its cursor is the ledger of that minute); a stale one must never be committed or reused.
+genesis/mainnet.json

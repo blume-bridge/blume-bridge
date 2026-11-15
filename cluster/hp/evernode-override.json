@@ -1,0 +1,5 @@
+{
+  "contract": {
+    "consensus": { "roundtime": 3000 }
+  }
+}

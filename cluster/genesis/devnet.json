@@ -1,0 +1,88 @@
+{
+  "config": {
+    "k": 2,
+    "n": 3,
+    "feed": "xrpl",
+    "testHooks": false,
+    "xrpl": {
+      "rpc": [
+        "https://s.devnet.rippletest.net:51234/",
+        "https://clio.devnet.rippletest.net:51234/"
+      ],
+      "lockAccount": "rMmQ6KMKs4CXnBteu4QRCYBSYowF3K6kNM",
+      "fundingAccount": "rGb3ToJN6nMEA1y4S6zXCey3TgEBFtbyfg",
+      "windowLedgers": 5,
+      "network": "test",
+      "maxEventsPerView": 50,
+      "pollMs": 8000
+    },
+    "params": {
+      "split": {
+        "operators": 70,
+        "treasury": 30
+      },
+      "feeXrp": "1",
+      "returnFeeXrp": "0.25",
+      "issuerListingFeeXrp": "50",
+      "metaFeeXrp": "5",
+      "xrplFeeDrops": "1000",
+      "actionTtlLedgers": 400,
+      "trustLineLimit": "1000000000000000",
+      "defaultCapUnits": "100000",
+      "releaseRetryMs": 60000,
+      "releaseHoldMs": 300000,
+      "payout": {
+        "everyMs": 600000,
+        "minXrp": "0.5",
+        "minShareXrp": "1",
+        "lockFloorXrp": "10"
+      }
+    },
+    "intentTtlMs": 3600000,
+    "evm": {
+      "rpc": [
+        "https://rpc.testnet.xrplevm.org"
+      ],
+      "chainId": 1449000,
+      "minter": "0xC8F25eF980bD65aF1e9C2655e3b37c059fD73aD8",
+      "windowBlocks": 10,
+      "confirmations": 2,
+      "maxEventsPerView": 50,
+      "pollMs": 8000,
+      "gasLimit": 1500000,
+      "relayTimeoutMs": 180000
+    }
+  },
+  "tokens": {
+    "XRP": {
+      "sym": "XRP",
+      "name": "XRP",
+      "native": true,
+      "issuer": "native",
+      "status": "listed",
+      "lockedUnits": "0",
+      "dustUnits": "0"
+    },
+    "PETAL": {
+      "sym": "PETAL",
+      "name": "Petal",
+      "issuer": "rEsercBp9HTDxY1YJeVJLH5EhdeQFgJKrH",
+      "currency": "504554414C000000000000000000000000000000",
+      "status": "listed",
+      "capUnits": "1000000",
+      "lockedUnits": "0",
+      "dustUnits": "0",
+      "listedAt": 1792295027022
+    }
+  },
+  "cursor": {
+    "xrpl": {
+      "ledger": 6210516,
+      "seen": []
+    },
+    "evm": {
+      "block": 9124611,
+      "seen": []
+    }
+  }
+}

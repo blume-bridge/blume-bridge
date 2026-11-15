@@ -1,0 +1,5 @@
+{
+  "//": "What the contract bundle is built from (npm run build: ncc type-checks against the tsconfig nearest its entry). Only the cluster's own code: the tests next door import the bridge site's browser code, which has no business in this type-check.",
+  "extends": "../tsconfig.json",
+  "include": ["./**/*"]
+}

@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 800" role="img" aria-label="BTC wrapper on XRPL: users on top, the HotPocket custodian cluster in the middle between the Bitcoin vault and the XRPL issuer, and Evernode hosts, treasury and bonds underneath. Green arrows trace a deposit from Bitcoin to XRP; purple arrows trace a redemption from XRP back to Bitcoin." font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#32E685"/></marker>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9A52FF"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8A8A94"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1240" height="800" rx="14" fill="#111112"/>
+  <text x="40" y="28" font-size="14" font-weight="700" fill="#F5F5F7">BTC wrapper on XRPL · architecture at a glance</text>
+  <text x="1200" y="28" font-size="11" fill="#6B6B73" text-anchor="end">design draft</text>
+
+  <!-- ===== top band: people and their wallets ===== -->
+  <g>
+    <rect x="40" y="48" width="320" height="90" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="60" y="80" font-size="13" font-weight="700" fill="#F5F5F7">Any Bitcoin wallet or exchange</text>
+    <text x="60" y="102" font-size="11" fill="#9A9AA0">no wallet integration needed</text>
+    <text x="60" y="120" font-size="11" fill="#9A9AA0">an exchange withdrawal works</text>
+
+    <rect x="420" y="48" width="400" height="90" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="440" y="80" font-size="13" font-weight="700" fill="#F5F5F7">Website</text>
+    <text x="440" y="102" font-size="11" fill="#9A9AA0">sign in with Xaman or Joey</text>
+    <text x="440" y="120" font-size="11" fill="#9A9AA0">shows your Bitcoin address and live progress</text>
+
+    <rect x="880" y="48" width="320" height="90" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="900" y="80" font-size="13" font-weight="700" fill="#F5F5F7">User's XRPL wallet</text>
+    <text x="900" y="102" font-size="11" fill="#9A9AA0">receives XRP, RLUSD, or wBTC</text>
+    <text x="900" y="120" font-size="11" fill="#9A9AA0">trust line needed only to hold wBTC</text>
+
+    <line x1="360" y1="93" x2="420" y2="93" stroke="#8A8A94" stroke-dasharray="4 3" marker-end="url(#an)"/>
+    <text x="390" y="86" font-size="10" fill="#8A8A94" text-anchor="middle">address</text>
+    <line x1="820" y1="93" x2="880" y2="93" stroke="#8A8A94" stroke-dasharray="4 3" marker-end="url(#an)"/>
+    <text x="850" y="86" font-size="10" fill="#8A8A94" text-anchor="middle">sign</text>
+  </g>
+
+  <!-- ===== middle band: Bitcoin | cluster | XRPL ===== -->
+  <!-- Bitcoin -->
+  <g>
+    <rect x="40" y="230" width="320" height="300" rx="10" fill="#151517" stroke="#2E2E32"/>
+    <text x="60" y="256" font-size="11" font-weight="700" letter-spacing="2" fill="#6B6B73">BITCOIN</text>
+    <rect x="60" y="290" width="280" height="150" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="80" y="316" font-size="13" font-weight="700" fill="#F5F5F7">Vault</text>
+    <text x="80" y="336" font-size="11" fill="#9A9AA0">k-of-n P2WSH multisig</text>
+    <text x="80" y="364" font-size="11" fill="#9A9AA0">one key per operator node</text>
+    <text x="80" y="382" font-size="11" fill="#9A9AA0">deposit addresses derived per user</text>
+    <text x="80" y="400" font-size="11" fill="#9A9AA0">1:1 reserves, publicly auditable</text>
+    <text x="80" y="418" font-size="11" fill="#9A9AA0">fee surplus accrues here</text>
+    <text x="80" y="470" font-size="11" fill="#6B6B73">6 confirmations before a mint</text>
+    <text x="80" y="488" font-size="11" fill="#6B6B73">payouts pay the network fee</text>
+  </g>
+
+  <!-- Cluster -->
+  <g>
+    <rect x="420" y="230" width="400" height="300" rx="10" fill="#151517" stroke="#2E2E32"/>
+    <text x="440" y="256" font-size="11" font-weight="700" letter-spacing="2" fill="#6B6B73">CUSTODIAN CLUSTER · HOTPOCKET ON EVERNODE</text>
+
+    <rect x="440" y="276" width="110" height="118" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="450" y="296" font-size="12" font-weight="700" fill="#F5F5F7">Node 1</text>
+    <text x="450" y="316" font-size="11" fill="#9A9AA0">BTC key</text>
+    <text x="450" y="334" font-size="11" fill="#9A9AA0">XRPL signer</text>
+    <text x="450" y="352" font-size="11" fill="#9A9AA0">BTC light client</text>
+    <text x="450" y="370" font-size="11" fill="#9A9AA0">XRPL watcher</text>
+
+    <rect x="565" y="276" width="110" height="118" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="575" y="296" font-size="12" font-weight="700" fill="#F5F5F7">Node 2</text>
+    <text x="575" y="316" font-size="11" fill="#9A9AA0">BTC key</text>
+    <text x="575" y="334" font-size="11" fill="#9A9AA0">XRPL signer</text>
+    <text x="575" y="352" font-size="11" fill="#9A9AA0">BTC light client</text>
+    <text x="575" y="370" font-size="11" fill="#9A9AA0">XRPL watcher</text>
+
+    <rect x="690" y="276" width="110" height="118" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="700" y="296" font-size="12" font-weight="700" fill="#F5F5F7">Node n</text>
+    <text x="700" y="316" font-size="11" fill="#9A9AA0">BTC key</text>
+    <text x="700" y="334" font-size="11" fill="#9A9AA0">XRPL signer</text>
+    <text x="700" y="352" font-size="11" fill="#9A9AA0">BTC light client</text>
+    <text x="700" y="370" font-size="11" fill="#9A9AA0">XRPL watcher</text>
+
+    <line x1="450" y1="412" x2="790" y2="412" stroke="#8A8A94" marker-start="url(#an)" marker-end="url(#an)"/>
+    <circle cx="600" cy="412" r="9" fill="#111112" stroke="#32E685" stroke-width="1.5"/>
+    <text x="600" y="415.5" font-size="10" font-weight="700" fill="#32E685" text-anchor="middle">3</text>
+    <circle cx="640" cy="412" r="9" fill="#111112" stroke="#9A52FF" stroke-width="1.5"/>
+    <text x="640" y="415.5" font-size="10" font-weight="700" fill="#9A52FF" text-anchor="middle">7</text>
+    <text x="620" y="432" font-size="10" fill="#8A8A94" text-anchor="middle">NPL · vote on what each chain says · exchange signatures</text>
+
+    <rect x="440" y="444" width="360" height="70" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="450" y="466" font-size="12" font-weight="700" fill="#F5F5F7">Consensus state</text>
+    <text x="450" y="486" font-size="11" fill="#9A9AA0">deposits · mint and redeem queues · fees · membership</text>
+  </g>
+
+  <!-- XRPL -->
+  <g>
+    <rect x="880" y="230" width="320" height="300" rx="10" fill="#151517" stroke="#2E2E32"/>
+    <text x="900" y="256" font-size="11" font-weight="700" letter-spacing="2" fill="#6B6B73">XRPL</text>
+    <rect x="900" y="276" width="280" height="118" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="920" y="298" font-size="13" font-weight="700" fill="#F5F5F7">Issuer account</text>
+    <text x="920" y="318" font-size="11" fill="#9A9AA0">controlled only by a k-of-n SignerList</text>
+    <text x="920" y="336" font-size="11" fill="#9A9AA0">master key disabled, NoFreeze set</text>
+    <text x="920" y="354" font-size="11" fill="#9A9AA0">mints wBTC on deposit, burns on redeem</text>
+    <text x="920" y="372" font-size="11" fill="#9A9AA0">no clawback, no freeze, ever</text>
+
+    <rect x="900" y="412" width="280" height="102" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="920" y="434" font-size="13" font-weight="700" fill="#F5F5F7">wBTC IOU + AMM pools</text>
+    <text x="920" y="454" font-size="11" fill="#9A9AA0">wBTC/XRP · wBTC/RLUSD</text>
+    <text x="920" y="472" font-size="11" fill="#9A9AA0">swaps are the ledger's job, not ours</text>
+    <text x="920" y="490" font-size="11" fill="#9A9AA0">XRP delivery routes through the AMM</text>
+  </g>
+
+  <!-- ===== flow arrows ===== -->
+  <!-- 1 send BTC -->
+  <line x1="150" y1="138" x2="150" y2="290" stroke="#32E685" stroke-width="1.5" marker-end="url(#ag)"/>
+  <circle cx="150" cy="184" r="9" fill="#111112" stroke="#32E685" stroke-width="1.5"/>
+  <text x="150" y="187.5" font-size="10" font-weight="700" fill="#32E685" text-anchor="middle">1</text>
+  <text x="164" y="188" font-size="10" fill="#32E685">send BTC</text>
+  <!-- 9 BTC paid out -->
+  <line x1="250" y1="290" x2="250" y2="138" stroke="#9A52FF" stroke-width="1.5" marker-end="url(#ap)"/>
+  <circle cx="250" cy="184" r="9" fill="#111112" stroke="#9A52FF" stroke-width="1.5"/>
+  <text x="250" y="187.5" font-size="10" font-weight="700" fill="#9A52FF" text-anchor="middle">9</text>
+  <text x="264" y="188" font-size="10" fill="#9A52FF">BTC paid out</text>
+
+  <!-- 2 observe deposit -->
+  <line x1="340" y1="310" x2="420" y2="310" stroke="#32E685" stroke-width="1.5" marker-end="url(#ag)"/>
+  <circle cx="380" cy="310" r="9" fill="#111112" stroke="#32E685" stroke-width="1.5"/>
+  <text x="380" y="313.5" font-size="10" font-weight="700" fill="#32E685" text-anchor="middle">2</text>
+  <text x="380" y="296" font-size="10" fill="#32E685" text-anchor="middle">6 confs</text>
+  <!-- 8 sign payout -->
+  <line x1="420" y1="380" x2="340" y2="380" stroke="#9A52FF" stroke-width="1.5" marker-end="url(#ap)"/>
+  <circle cx="380" cy="380" r="9" fill="#111112" stroke="#9A52FF" stroke-width="1.5"/>
+  <text x="380" y="383.5" font-size="10" font-weight="700" fill="#9A52FF" text-anchor="middle">8</text>
+  <text x="380" y="402" font-size="10" fill="#9A52FF" text-anchor="middle">k sigs</text>
+
+  <!-- 4 multisign mint -->
+  <line x1="820" y1="310" x2="880" y2="310" stroke="#32E685" stroke-width="1.5" marker-end="url(#ag)"/>
+  <circle cx="850" cy="310" r="9" fill="#111112" stroke="#32E685" stroke-width="1.5"/>
+  <text x="850" y="313.5" font-size="10" font-weight="700" fill="#32E685" text-anchor="middle">4</text>
+  <text x="850" y="296" font-size="10" fill="#32E685" text-anchor="middle">k sigs</text>
+  <!-- 7 burn observed -->
+  <line x1="880" y1="380" x2="820" y2="380" stroke="#9A52FF" stroke-width="1.5" marker-end="url(#ap)"/>
+  <circle cx="850" cy="380" r="9" fill="#111112" stroke="#9A52FF" stroke-width="1.5"/>
+  <text x="850" y="383.5" font-size="10" font-weight="700" fill="#9A52FF" text-anchor="middle">7</text>
+  <text x="850" y="402" font-size="10" fill="#9A52FF" text-anchor="middle">burn seen</text>
+
+  <!-- 5 XRP delivered -->
+  <line x1="950" y1="230" x2="950" y2="138" stroke="#32E685" stroke-width="1.5" marker-end="url(#ag)"/>
+  <circle cx="950" cy="184" r="9" fill="#111112" stroke="#32E685" stroke-width="1.5"/>
+  <text x="950" y="187.5" font-size="10" font-weight="700" fill="#32E685" text-anchor="middle">5</text>
+  <text x="964" y="188" font-size="10" fill="#32E685">XRP via AMM</text>
+  <!-- 6 redeem payment -->
+  <line x1="1090" y1="138" x2="1090" y2="230" stroke="#9A52FF" stroke-width="1.5" marker-end="url(#ap)"/>
+  <circle cx="1090" cy="184" r="9" fill="#111112" stroke="#9A52FF" stroke-width="1.5"/>
+  <text x="1090" y="187.5" font-size="10" font-weight="700" fill="#9A52FF" text-anchor="middle">6</text>
+  <text x="1104" y="188" font-size="10" fill="#9A52FF">redeem + memo</text>
+
+  <!-- website reads cluster state -->
+  <line x1="620" y1="138" x2="620" y2="230" stroke="#8A8A94" stroke-dasharray="4 3" marker-start="url(#an)" marker-end="url(#an)"/>
+  <text x="630" y="188" font-size="10" fill="#8A8A94">address · status</text>
+
+  <!-- cluster runs on evernode -->
+  <line x1="620" y1="530" x2="620" y2="590" stroke="#8A8A94" stroke-dasharray="4 3" marker-start="url(#an)" marker-end="url(#an)"/>
+  <text x="630" y="564" font-size="10" fill="#8A8A94">runs on · renews its own leases</text>
+
+  <!-- ===== bottom band: legend | Xahau / Evernode ===== -->
+  <g>
+    <rect x="40" y="590" width="320" height="170" rx="10" fill="#151517" stroke="#2E2E32"/>
+    <text x="60" y="616" font-size="11" font-weight="700" letter-spacing="2" fill="#6B6B73">HOW TO READ</text>
+    <line x1="60" y1="644" x2="100" y2="644" stroke="#32E685" stroke-width="1.5" marker-end="url(#ag)"/>
+    <text x="112" y="648" font-size="11" fill="#9A9AA0">deposit: BTC in, XRP out (steps 1 to 5)</text>
+    <line x1="60" y1="672" x2="100" y2="672" stroke="#9A52FF" stroke-width="1.5" marker-end="url(#ap)"/>
+    <text x="112" y="676" font-size="11" fill="#9A9AA0">redeem: XRP in, BTC out (steps 6 to 9)</text>
+    <line x1="60" y1="700" x2="100" y2="700" stroke="#8A8A94" stroke-dasharray="4 3" marker-end="url(#an)"/>
+    <text x="112" y="704" font-size="11" fill="#9A9AA0">reads, control, and money for hosting</text>
+    <text x="60" y="736" font-size="11" fill="#6B6B73">k of n: a quorum of operators, for example 7 of 10</text>
+  </g>
+
+  <g>
+    <rect x="420" y="590" width="780" height="170" rx="10" fill="#151517" stroke="#2E2E32"/>
+    <text x="440" y="616" font-size="11" font-weight="700" letter-spacing="2" fill="#6B6B73">XAHAU · EVERNODE</text>
+
+    <rect x="440" y="636" width="360" height="104" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="460" y="658" font-size="13" font-weight="700" fill="#F5F5F7">Operator hosts</text>
+    <text x="460" y="678" font-size="11" fill="#9A9AA0">one cluster node per operator-owned host</text>
+    <text x="460" y="696" font-size="11" fill="#9A9AA0">leases paid in EVR by the treasury</text>
+    <text x="460" y="714" font-size="11" fill="#9A9AA0">any host is replaceable: keys rotate, vault sweeps</text>
+
+    <rect x="820" y="636" width="360" height="104" rx="8" fill="#1A1A1D" stroke="#3A3A3F"/>
+    <text x="840" y="658" font-size="13" font-weight="700" fill="#F5F5F7">Treasury and operator bonds</text>
+    <text x="840" y="678" font-size="11" fill="#9A9AA0">XRPL accounts under the same SignerList</text>
+    <text x="840" y="696" font-size="11" fill="#9A9AA0">fee share paid to operators pro rata</text>
+    <text x="840" y="714" font-size="11" fill="#9A9AA0">TVL cap = bond of the smallest signing set</text>
+  </g>
+</svg>

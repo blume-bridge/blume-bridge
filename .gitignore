@@ -1,0 +1,20 @@
+node_modules/
+dist/
+dist-client/
+dist-tools/
+.snapshot/
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+
+# Never commit keys or a genesis made for a real network
+keys/
+*.key
+*.seed
+.env
+.env.*
+!.env.example
+cluster/genesis/mainnet.json
+cluster/genesis/snapshot.json
+cluster/seed/mainnet.json
+.DS_Store

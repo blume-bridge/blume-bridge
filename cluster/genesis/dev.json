@@ -1,0 +1,40 @@
+{
+  "config": {
+    "k": 2,
+    "n": 3,
+    "feed": "fake",
+    "testHooks": true,
+    "xrpl": {
+      "rpc": ["https://testnet.xrpl-labs.com/"],
+      "lockAccount": "r4yMDHnkZjsUssdBzbFsK9XPqQeFFvZyvB",
+      "fundingAccount": "rL7ZqpfChZ7HXUf5oJptzdfwncy7gcQVWm",
+      "windowLedgers": 5,
+      "maxEventsPerView": 50,
+      "pollMs": 8000
+    },
+    "params": {
+      "split": { "operators": 70, "treasury": 30 },
+      "feeXrp": "1",
+      "returnFeeXrp": "0.25",
+      "issuerListingFeeXrp": "50",
+      "metaFeeXrp": "5",
+      "xrplFeeDrops": "1000",
+      "actionTtlLedgers": 400,
+      "trustLineLimit": "1000000000000000",
+      "defaultCapUnits": "100000",
+      "releaseRetryMs": 60000,
+      "releaseHoldMs": 300000,
+      "payout": { "everyMs": 600000, "minXrp": "0.5", "minShareXrp": "1", "lockFloorXrp": "10" }
+    },
+    "intentTtlMs": 3600000
+  },
+  "tokens": {
+    "XRP": { "sym": "XRP", "name": "XRP", "native": true, "issuer": "native", "status": "listed", "lockedUnits": "0", "dustUnits": "0" },
+    "PETAL": {
+      "sym": "PETAL", "name": "Petal", "issuer": "ra9i5durfkchY6ZWXZwPf7Gvp9MqE1QpFY",
+      "currency": "504554414C000000000000000000000000000000", "status": "listed",
+      "capUnits": "1000000", "lockedUnits": "0", "dustUnits": "0", "listedAt": 1786060800000
+    }
+  },
+  "cursor": { "xrpl": { "ledger": 100, "seen": [] } }
+}
